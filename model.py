@@ -184,11 +184,11 @@ class BicycleGAN(object):
                                                    self.z: sample_z})
 
             if step % self._log_step == 0:
-                z = np.random.normal(size=(1, self._latent_dim))
+                z = np.random.normal(size=(self._batch_size, self._latent_dim))
                 image_ab = sess.run(self.image_ab, feed_dict={self.image_a: image_a,
                                                             self.z: z,
                                                             self.is_train: False})
-                imsave('results/r_{}.jpg'.format(step), np.squeeze(image_ab, axis=0))
+                imsave('results/r_{}.jpg'.format(step), np.squeeze(image_ab[0:1], axis=0))
 
                 summary_writer.add_summary(fetched[-1], step)
                 summary_writer.flush()
