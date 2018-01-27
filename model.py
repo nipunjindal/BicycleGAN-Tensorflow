@@ -186,7 +186,7 @@ class BicycleGAN(object):
             if step % self._log_step == 0:
                 z = np.random.normal(size=(1, self._latent_dim))
                 image_ab = sess.run(self.image_ab, feed_dict={self.image_a: image_a[0:1],
-                                                            self.z: z,
+                                                            self.z: z[0:1],
                                                             self.is_train: False})
                 imsave('results/r_{}.jpg'.format(step), np.squeeze(image_ab, axis=0))
 
