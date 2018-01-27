@@ -169,8 +169,8 @@ class BicycleGAN(object):
             #     #data_A, data_B = zip(*data)
 
             ran_choice = np.random.choice(len(data_A), self._batch_size)
-            image_a = np.stack(data_A[ran_choice])
-            image_b = np.stack(data_B[ran_choice])
+            image_a = data_A[ran_choice]
+            image_b = data_B[ran_choice]
             sample_z = np.random.normal(size=(self._batch_size, self._latent_dim))
 
             fetches = [self.loss, self.optimizer_D,
