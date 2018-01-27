@@ -18,8 +18,8 @@ def read_image(path):
     h, w, c = image.shape
     assert w == 256 or w == 512, 'Image size mismatch ({}, {})'.format(h, w)
     assert h == 128 or h == 256, 'Image size mismatch ({}, {})'.format(h, w)
-    image_a = image[:, :w/2, :].astype(np.float32) / 255.0
-    image_b = image[:, w/2:, :].astype(np.float32) / 255.0
+    image_a = image[:, :int(w/2), :].astype(np.float32) / 255.0
+    image_b = image[:, int(w/2):, :].astype(np.float32) / 255.0
 
     # range of pixel values = [-1.0, 1.0]
     image_a = image_a * 2.0 - 1.0

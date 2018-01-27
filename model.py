@@ -163,9 +163,10 @@ class BicycleGAN(object):
                 lr = max(0.0, lr_initial - (epoch - num_initial_iter) * lr_decay)
 
             if iter == 0:
-                data = zip(data_A, data_B)
-                random.shuffle(data)
-                data_A, data_B = zip(*data)
+                #data = zip(data_A, data_B)
+                random.shuffle(data_A)
+                random.shuffle(data_B)
+                #data_A, data_B = zip(*data)
 
             image_a = np.stack(data_A[iter*self._batch_size:(iter+1)*self._batch_size])
             image_b = np.stack(data_B[iter*self._batch_size:(iter+1)*self._batch_size])
